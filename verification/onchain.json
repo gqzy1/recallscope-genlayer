@@ -1,0 +1,23 @@
+{
+  "status": "VERIFIED_ONCHAIN",
+  "network": "Stable Studionet",
+  "chain_id": 61999,
+  "address": "0x5EbaD2E0dA70e9aCd8f50C6837cb060965257F70",
+  "source_sha256": "f95f16a8bdf985c4db4ff87224ffee9e47d0847c3e0d5a16e4a7ed5cec4a04bb",
+  "deployment_tx": "0x1f20ad22f235d0bf1313f139db2073890e49b1d2615312550402ca2b201b2a3f",
+  "example": {
+    "owner": "0x396b1434dfff7d9901aeb50dfd09a56a68d5533c",
+    "request_id": "anker-a1263-20261020",
+    "transaction": "0x8ae366aa3796547fc1fba7f7c0d668ed42a14b990f6ddefcfab0afabf5e20fe5"
+  },
+  "consensus": "MAJORITY_AGREE",
+  "execution": "SUCCESS",
+  "result": "NEEDS_DETAILS",
+  "labels": {
+    "identity": "MATCH",
+    "period": "UNKNOWN",
+    "region": "MATCH",
+    "variant": "UNKNOWN"
+  },
+  "notice_sha256": "69b7d852cabb612cf944d872a1eaac41c2cd1a4f75303fba1a67564387fa9f22"
+}
