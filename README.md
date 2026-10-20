@@ -6,7 +6,7 @@ RecallScope is an inspection desk for comparing a secondhand product with one of
 
 ## Try it
 
-Open [the inspection desk](https://gqzy1.github.io/recallscope-genlayer/) and select **View worked example**. It is labelled illustrative and never presents edited form fields as a newly evaluated result.
+Open [the inspection desk](https://gqzy1.github.io/recallscope-genlayer/). Select **Read finalized inspection** for a live chain record, or **View worked example** for an illustrative walkthrough.
 
 For development, Node.js 20+:
 
@@ -27,7 +27,7 @@ The interface draws on Leonardo da Vinci’s notebooks: warm parchment, sepia in
 ## Use GenLayer
 
 1. Open the desk and select **Read finalized inspection** for a wallet-free chain read. To create your own inspection, open **Network settings**; the canonical address is already filled.
-2. Open **Network settings**, paste the deployed contract address and select **Verify contract source**. The source SHA256 must match `deployment.json`.
+2. Select **Verify contract source** in **Network settings**. The source SHA256 must match `deployment.json`.
 3. Connect a browser wallet on Stable Studionet, or select **Open deployed contract in Studio** to use the official Studio development signer. Complete the official CPSC notice URL and product facts, using a new request ID for a new inspection.
 4. Select **Submit to GenLayer** and sign once. Keep the returned transaction ID.
 5. Use **Check saved transaction** until finalization. The app verifies transaction sender, contract, method and exact input, then reads the matching finalized record and checks its hashes.
@@ -47,15 +47,17 @@ The local pending-request record exists in this browser profile only. Clearing b
 
 User-supplied facts are not authenticated. A secondhand purchase date is not an original sale date. Manufacturer serial-number checks cannot be inferred from a model match.
 
-## Source and validation
+## Contract
 
-The identical reusable contract is included under `contracts/`. The canonical address and exact source hash are configured in `deployment.json`. The interface supports real GenLayer reads, transaction tracking and browser-wallet writes. Desktop page rendering, example interaction, motion toggle, network dialog and JSON export have been checked on the public website. Mobile signing and the optional browser-wallet signing path remain unverified. Sixteen automated JavaScript tests cover the DOM example, hash verification, wallet changes, pending recovery and duplicate prevention. The contract has 26 CPython harness tests and real SDK storage/callback checks; see its README for the precise limits.
+The reusable contract is included under `contracts/`. Its address and source hash are configured in `deployment.json`; deployment and example transaction details are in `verification/onchain.json`.
 
-The CPSC source is fetched inside the contract, not supplied as a browser-generated summary. Web text is agreed before semantic classification. Independent validators must agree on all four material labels and audit the leader's evidence. The resulting record is immutable and owner-scoped.
+The contract fetches the official CPSC notice, agrees on its text, and compares four dimensions through independent validators. Accepted records are immutable and owner-scoped.
+
+Studio-assisted transactions are supported. Browser-wallet signing is experimental; wallet-extension signing and mobile signing have not been tested.
 
 ## Static hosting
 
-The Pages workflow builds and publishes `dist/` when the main branch changes. Configure the repository's Pages source as GitHub Actions. An independent CI workflow runs contract and application checks on pushes and pull requests.
+The Pages workflow builds and publishes `dist/` when the main branch changes. Configure the repository's Pages source as GitHub Actions. Application checks run before publishing; pull requests also run the test workflow.
 
 The built `dist/` directory can also be hosted on any static host. All assets and links are relative to support repository subpaths.
 
