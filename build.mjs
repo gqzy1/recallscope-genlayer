@@ -1,0 +1,2 @@
+import fs from 'node:fs';import{build}from'esbuild';
+fs.rmSync('dist',{recursive:true,force:true});fs.mkdirSync('dist');for(const file of ['index.html','deployment.json'])fs.copyFileSync(file,'dist/'+file);for(const dir of ['assets','examples','contracts'])fs.cpSync(dir,'dist/'+dir,{recursive:true});await build({entryPoints:['src/app.js'],bundle:true,format:'esm',target:'es2022',outfile:'dist/app.js',minify:true});

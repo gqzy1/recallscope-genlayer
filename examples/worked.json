@@ -1,0 +1,36 @@
+{
+  "state": "NEEDS_DETAILS",
+  "input": {
+    "notice_url": "https://www.cpsc.gov/Recalls/2025/More-than-One-Million-Anker-Power-Banks-Recalled-Due-to-Fire-and-Burn-Hazards-Manufactured-by-Anker-Innovations",
+    "product": {
+      "brand": "Anker",
+      "model": "A1263",
+      "batch": "",
+      "original_sale": "Unknown",
+      "region": "United States",
+      "details": "PowerCore 10000 portable power bank. Serial number not yet checked with manufacturer."
+    }
+  },
+  "assessment": {
+    "identity": {
+      "label": "MATCH",
+      "quote": "",
+      "reason": "The worked example identifies the same brand and product family."
+    },
+    "variant": {
+      "label": "UNKNOWN",
+      "quote": "",
+      "reason": "The notice requires a manufacturer serial-number check. This product has not completed it."
+    },
+    "period": {
+      "label": "UNKNOWN",
+      "quote": "",
+      "reason": "The original sale date is unknown; a secondhand purchase date would not establish it."
+    },
+    "region": {
+      "label": "MATCH",
+      "quote": "",
+      "reason": "The product is described as being from the United States market."
+    }
+  }
+}

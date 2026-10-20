@@ -1,0 +1,1 @@
+{"name":"recallscope-genlayer","version":"0.1.0","private":true,"type":"module","scripts":{"build":"node build.mjs","test":"node --test tests/*.test.mjs"},"dependencies":{"genlayer-js":"1.1.8","esbuild":"0.25.12"},"devDependencies":{"jsdom":"26.1.0"}}
