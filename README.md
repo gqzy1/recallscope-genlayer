@@ -6,7 +6,7 @@ RecallScope is an inspection desk for comparing a secondhand product with one of
 
 ## Try it
 
-Open `RecallScope_Preview.html` from the release package for a self-contained worked example. It is labelled illustrative and never presents edited form fields as a newly evaluated result.
+Open [the inspection desk](https://gqzy1.github.io/recallscope-genlayer/) and select **View worked example**. It is labelled illustrative and never presents edited form fields as a newly evaluated result.
 
 For development, Node.js 20+:
 
@@ -45,7 +45,7 @@ User-supplied facts are not authenticated. A secondhand purchase date is not an 
 
 ## Source and validation
 
-The identical reusable contract is included under `contracts/`. No deployed address is configured in this release. The interface supports real GenLayer reads and signed writes, but no live transaction is claimed. Browser layout/signing, GenVM execution and validator web access remain unverified. Eleven automated JavaScript tests cover the DOM example, hash verification, wallet changes, pending recovery and duplicate prevention. The contract has 25 CPython harness tests; see its README for the precise limits.
+The identical reusable contract is included under `contracts/`. No deployed address is configured in this release. The interface supports real GenLayer reads and signed writes, but no live transaction is claimed. Desktop page rendering, example interaction, motion toggle, network dialog and JSON export have been checked on the public website. Mobile layout/signing, GenVM execution and validator web access remain unverified. Eleven automated JavaScript tests cover the DOM example, hash verification, wallet changes, pending recovery and duplicate prevention. The contract has 25 CPython harness tests; see its README for the precise limits.
 
 The CPSC source is fetched inside the contract, not supplied as a browser-generated summary. Web text is agreed before semantic classification. Independent validators must agree on all four material labels and audit the leader's evidence. The resulting record is immutable and owner-scoped.
 
