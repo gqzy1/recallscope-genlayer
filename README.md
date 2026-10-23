@@ -2,11 +2,19 @@
 
 **Evidence before the next handoff.**
 
-RecallScope is an inspection desk for comparing a secondhand product with one official CPSC recall notice. It separates product identity, model/batch scope, original sale period and region, then preserves a readable record of what matches and what remains uncertain.
+RecallScope is a recall investigation desk for secondhand products. Discover candidate notices through the official CPSC API, investigate one product across up to eight selected notices, and preserve follow-up revisions when additional product facts become available. Each GenLayer assessment independently compares product identity, model/batch scope, original sale period and region against one official notice.
 
 ## Try it
 
-Open [the inspection desk](https://gqzy1.github.io/recallscope-genlayer/). Select **Read finalized inspection** for a live chain record, or **View worked example** for an illustrative walkthrough.
+Open [the investigation desk](https://gqzy1.github.io/recallscope-genlayer/).
+
+1. Select **Search official notices**. The default Anker / A1263 search ranks candidate notices by text overlap. Ranking is not an applicability assessment.
+2. Add notices to an investigation, then select **Prepare assessment** for one notice. The product facts in the form are frozen into that investigation revision.
+3. Read a known finalized inspection with **Read finalized inspection**, or submit the prepared request through the existing source-verified GenLayer workflow. Matching finalized readbacks are linked to the investigation automatically.
+4. Edit product facts and select **Save follow-up revision**. Previous records remain in history, new request IDs are generated, and all selected notices start unchecked in the new revision.
+5. Use **Export investigation** to retain the product revisions and per-notice evidence. Browser-restored records are labelled cached until **Re-read saved chain records** verifies them again.
+
+The dated Anker catalogue is an explicit fallback when official search is unavailable. It contains a limited saved title search, not a complete recall database. [Investigation guide](docs/INVESTIGATIONS.md) · [Release changes](CHANGELOG.md).
 
 For development, Node.js 20+:
 
@@ -16,13 +24,13 @@ npm test
 npm run build
 ```
 
-Serve `dist/` through any static HTTP server. There is no application backend or API key.
+Serve `dist/` through any static HTTP server. There is no application backend or API key. Official candidate search calls the public CPSC API directly from the browser.
 
 ## Design
 
 The interface draws on Leonardo da Vinci’s notebooks: warm parchment, sepia ink, original vector engineering studies, compass geometry and marginal annotations. Slow ambient light, pointer parallax, scroll reveals and a compass cursor support the visual language. Motion can be disabled and respects the operating system’s reduced-motion preference. The artwork is an original composition, not a scan of a historical manuscript.
 
-**Release 0.2 · [Deployed contract](https://explorer-studio.genlayer.com/address/0x5EbaD2E0dA70e9aCd8f50C6837cb060965257F70) · Stable Studionet / 61999**
+**Release 0.3 · [Deployed contract](https://explorer-studio.genlayer.com/address/0x5EbaD2E0dA70e9aCd8f50C6837cb060965257F70) · Stable Studionet / 61999**
 
 ## Use GenLayer
 
@@ -49,6 +57,8 @@ User-supplied facts are not authenticated. A secondhand purchase date is not an 
 
 ## Contract
 
+Release 0.3 adds discovery and investigation orchestration around the existing deployed contract. The contract source and address are unchanged. Each assessment remains one product against one notice; the association between notices and follow-up revisions lives in the browser and exported JSON, not in contract state.
+
 The reusable contract is included under `contracts/`. Its address and source hash are configured in `deployment.json`; deployment and example transaction details are in `verification/onchain.json`.
 
 The contract fetches the official CPSC notice, agrees on its text, and compares four dimensions through independent validators. Accepted records are immutable and owner-scoped.
@@ -72,3 +82,11 @@ node verification/verify-live.mjs
 ```
 
 This checks deployed source identity and each configured finalized case, then validates the exact stored input and notice hashes. It sends no transactions.
+
+## Investigation verification
+
+```sh
+node verification/verify-investigation.mjs
+```
+
+This performs a live official title search, re-reads the existing finalized example from the source-verified contract, links it into a two-notice investigation, and checks that a local follow-up revision resets coverage. It sends no transactions and does not claim a fresh follow-up assessment. The last captured output is in [verification/investigation.json](verification/investigation.json).
