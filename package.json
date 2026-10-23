@@ -1,11 +1,12 @@
 {
   "name": "recallscope-genlayer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "refresh:catalogue": "node scripts/refresh-catalogue.mjs"
   },
   "dependencies": {
     "genlayer-js": "1.1.8",

@@ -1,0 +1,23 @@
+// Public, read-only integration check. Does not submit or sign transactions.
+import fs from 'node:fs';
+import {ChainDesk} from '../src/chain.js';
+import {discover} from '../src/discovery.js';
+import {createCase,addNotice,saveRecord,startRevision,summary,compareRevision} from '../src/investigation.js';
+const manifest=JSON.parse(fs.readFileSync(new URL('../deployment.json',import.meta.url)));
+const storage={getItem:()=>null,setItem:()=>{},removeItem:()=>{}};
+const desk=new ChainDesk({expectedHash:manifest.source_sha256,manifest,storage});
+const candidates=await discover('Anker','A1263');
+await desk.bind(manifest.address);
+const record=await desk.read(manifest.example.owner,manifest.example.request_id);
+if(!record)throw Error('Configured finalized record not found.');
+const c=createCase(record.input.product,'readonly0001');
+const primary=candidates.notices.find(n=>n.url===record.input.notice_url);
+const second=candidates.notices.find(n=>n.url!==record.input.notice_url);
+if(!primary||!second)throw Error('Official search must return the known notice and another candidate.');
+addNotice(c,primary);addNotice(c,second);
+await saveRecord(c,record,manifest.address);
+const before=summary(c);
+startRevision(c,{...record.input.product,original_sale:'March 2022'});
+const after=summary(c);
+if(before.NEEDS_DETAILS!==1||before.UNCHECKED!==1||after.UNCHECKED!==2)throw Error('Investigation coverage or revision isolation failed.');
+console.log(JSON.stringify({checked_at:new Date().toISOString(),mode:'READ_ONLY_LIVE_INTEGRATION',api_source:candidates.source,api_retrieved_at:candidates.retrieved_at,candidate_count:candidates.total,selected_notices:[primary.url,second.url],chain_id:61999,contract:manifest.address,source_sha256:manifest.source_sha256,existing_record:{owner:record.owner,request_id:record.request_id,state:record.state,input_sha256:record.input_sha256},revision_1:before,revision_2:after,comparison:compareRevision(c),followup_scope:'Local input change only. No new assessment or chain write.',new_transactions:0},null,2));

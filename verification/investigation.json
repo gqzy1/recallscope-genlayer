@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-10-23T05:09:50.535Z",
+  "mode": "READ_ONLY_LIVE_INTEGRATION",
+  "api_source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Anker",
+  "api_retrieved_at": "2026-10-23T05:09:40.585Z",
+  "candidate_count": 8,
+  "selected_notices": [
+    "https://www.cpsc.gov/Recalls/2025/More-than-One-Million-Anker-Power-Banks-Recalled-Due-to-Fire-and-Burn-Hazards-Manufactured-by-Anker-Innovations",
+    "https://www.cpsc.gov/Recalls/2025/Anker-Soundcore-Lithium-Ion-Battery-Powered-Bluetooth-Speakers-Recalled-Due-to-Fire-Hazard-Sold-Exclusively-on-Amazon-com-by-Anker-Innovations"
+  ],
+  "chain_id": 61999,
+  "contract": "0x5EbaD2E0dA70e9aCd8f50C6837cb060965257F70",
+  "source_sha256": "f95f16a8bdf985c4db4ff87224ffee9e47d0847c3e0d5a16e4a7ed5cec4a04bb",
+  "existing_record": {
+    "owner": "0x396b1434dfff7d9901aeb50dfd09a56a68d5533c",
+    "request_id": "anker-a1263-20261020",
+    "state": "NEEDS_DETAILS",
+    "input_sha256": "deff65289ac5ba06c01c5e2edd93e83942d8e8183a56aa890a005bef20b5ebc6"
+  },
+  "revision_1": {
+    "POTENTIAL_MATCH": 0,
+    "NEEDS_DETAILS": 1,
+    "OUTSIDE_THIS_NOTICE": 0,
+    "UNCHECKED": 1
+  },
+  "revision_2": {
+    "POTENTIAL_MATCH": 0,
+    "NEEDS_DETAILS": 0,
+    "OUTSIDE_THIS_NOTICE": 0,
+    "UNCHECKED": 2
+  },
+  "comparison": [
+    {
+      "url": "https://www.cpsc.gov/Recalls/2025/More-than-One-Million-Anker-Power-Banks-Recalled-Due-to-Fire-and-Burn-Hazards-Manufactured-by-Anker-Innovations",
+      "before": "NEEDS_DETAILS",
+      "after": "UNCHECKED",
+      "dimensions": []
+    },
+    {
+      "url": "https://www.cpsc.gov/Recalls/2025/Anker-Soundcore-Lithium-Ion-Battery-Powered-Bluetooth-Speakers-Recalled-Due-to-Fire-Hazard-Sold-Exclusively-on-Amazon-com-by-Anker-Innovations",
+      "before": "UNCHECKED",
+      "after": "UNCHECKED",
+      "dimensions": []
+    }
+  ],
+  "followup_scope": "Local input change only. No new assessment or chain write.",
+  "new_transactions": 0
+}
